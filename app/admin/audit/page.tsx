@@ -56,7 +56,6 @@ export default async function AdminAuditPage({
   );
 
   const total = parseInt(countRow[0]?.n ?? '0', 10);
-  const startEntry = total === 0 ? 0 : (page - 1) * perPage + 1;
 
   return (
     <div>
@@ -158,7 +157,6 @@ export default async function AdminAuditPage({
                   style={{ color: 'var(--text-muted)' }}
                 >
                   {r.target_type && <span>{r.target_type}</span>}
-
                   {r.target_id && (
                     <span className="ml-1 font-mono">
                       {r.target_id.slice(0, 12)}...
@@ -209,7 +207,9 @@ export default async function AdminAuditPage({
             className="text-[12px]"
             style={{ color: 'var(--text-muted)' }}
           >
-            {startEntry}–{Math.min(page * perPage, total)} dari{' '}
+            {total === 0 ? 0 : (page - 1) * perPage + 1}
+            {'–'}
+            {Math.min(page * perPage, total)} dari{' '}
             {total.toLocaleString('id-ID')}
           </span>
 
