@@ -10,7 +10,7 @@
     },
     {
       "path": "/api/cron/reseller-expiry",
-      "schedule": "0 17 * * *"
+      "schedule": "0 16 * * *"
     }
   ]
 }
