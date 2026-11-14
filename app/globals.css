@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base:#0a0d14; --bg-surface:#11151f; --bg-elevated:#1a1f2e; --bg-input:#0d1119;
+  --border:#262b3a; --border-focus:#3b82f6;
+  --text-primary:#e8eaef; --text-secondary:#8b92a5; --text-muted:#5a6070; --text-disabled:#3f4554;
+  --accent:#3b82f6; --accent-hover:#2563eb;
+  --success:#22c55e; --warning:#eab308; --danger:#ef4444;
+  --shadow-card:0 1px 2px rgba(0,0,0,0.25); --shadow-modal:0 4px 12px rgba(0,0,0,0.4);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{background:var(--bg-base);color:var(--text-primary);font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.5}
+
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+*:focus{outline:none}
+::selection{background:rgba(59,130,246,.25);color:var(--text-primary)}
+
+.grid-bg{
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:80px 80px;opacity:.3;position:absolute;inset:0;pointer-events:none;
+}
+.spinner{width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite}
+.toggle{position:relative;display:inline-flex;align-items:center;width:32px;height:18px;border-radius:9px;background:var(--border);cursor:pointer;transition:background 150ms;flex-shrink:0}
+.toggle.on{background:var(--accent)}
+.toggle::after{content:'';position:absolute;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:transform 150ms}
+.toggle.on::after{transform:translateX(14px)}
+.tabular-nums{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.card-hover{transition:border-color 150ms ease}
+.card-hover:hover{border-color:var(--accent)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.status-pulse{animation:pulse 2s ease-in-out infinite}
+@media(max-width:1023px){
+  .sidebar-fixed{transform:translateX(-100%);transition:transform 200ms ease-out}
+  .sidebar-fixed.open{transform:translateX(0)}
+  .content-main{margin-left:0!important}
+}
